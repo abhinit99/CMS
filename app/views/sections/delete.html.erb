@@ -1,0 +1,14 @@
+<% @page_title="Delete Section"%>
+<%= link_to("<< Back to List",sections_path(:page_id=>@page.id),:class=>"back-link")%>
+
+<div class="sections delete">
+  <h2>Delete Section</h2>
+  <%= form_for(@section,:url => section_path(@section,:page_id=>@page_id),:method=>'delete') do |f| %>
+  <p>Permanently delete this Section ?</p>
+  <p class="reference-name"><%=@section.name%></p>
+
+  <div class="form-buttons">
+    <%=f.submit("Delete Section") %>
+  </div>
+  <% end %>
+</div>

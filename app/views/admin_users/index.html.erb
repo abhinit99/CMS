@@ -1,0 +1,29 @@
+<% @page_title="All Admin Users"%>
+
+<div class ="admin_users index">
+  <h2>Admin Users</h2>
+
+  <%= link_to("Add new Admin User",new_admin_user_path,:class=>'action new') %>
+
+  <table class ="listing" summary="AdminUser list">
+    <tr class="header">
+      <!-- <th>First Name</th> -->
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <% @admin_users.each do |admin_user| %>
+    <tr>
+      <td><%= admin_user.full_name %></td>
+      <td><%= admin_user.username %></td>
+      <td><%= mail_to(admin_user.email)%>
+      <td class="actions">
+        <%= link_to("Edit",edit_admin_user_path(admin_user.id),:class=>'action edit')%>
+        <%= link_to("Delete",delete_admin_user_path(admin_user.id),:class=>'action delete')%>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to("<<Back to Menu",admin_path(@admin_user),:class=>'back-link')%>
+</div>

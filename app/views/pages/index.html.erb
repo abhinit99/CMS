@@ -1,0 +1,36 @@
+<% @page_title="All Pages"%>
+
+<div class ="pages index">
+  <h2>Pages</h2>
+
+  <%= link_to("Add new Page",new_page_path(:subject_id=>@subject.id),:class=>'action new') %>
+
+  <table class ="listing" summary="Page list">
+    <tr class="header">
+      <th>#</th>
+      <th>Subject_id</th>
+      <th>Page</th>
+      <th>Permalink</th>
+      <th>Visible</th>
+      <th>Sections</th>
+      <th>Actions</th>
+    </tr>
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.position %></td>
+      <td><%= page.subject_id %></td>
+      <td><%= page.name %></td>
+      <td><%= page.permalink %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td><%=page.sections.size%>
+      <td class="actions">
+        <%= link_to("Show Sections",sections_path(:page_id=>page.id),:class=>'action show')%>
+        <%= link_to("Show",page_path(page.id,:subject_id=>@subject.id),:class=>'action show')%>
+        <%= link_to("Edit",edit_page_path(page.id,:subject_id=>@subject.id),:class=>'action edit')%>
+        <%= link_to("Delete",delete_page_path(page.id,:subject_id=>@subject.id),:class=>'action delete')%>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to("<<Back to Subjects",subjects_path,:class=>'back-link')%>
+</div>

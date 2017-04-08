@@ -1,0 +1,12 @@
+<h1>hello from hello...</h1>
+
+<%= 1+1 %><br />
+
+<%= link_to("Index page",{:controller => 'demo',:action => 'index'})%> <br />
+
+
+<br />
+ID:<%= @id %><br />
+PAGE NUMBER :<%= @page%><br />
+page number :<%= params[:page]%><br />
+next page:<%= params[:page].to_i+1%><br />
